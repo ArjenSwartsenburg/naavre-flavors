@@ -1,7 +1,7 @@
 ARG BUILD_IMAGE
 ARG RUNTIME_IMAGE
 
-FROM ${BUILD_IMAGE?} AS build
+FROM ${BUILD_IMAGE} AS build
 # When building actual cells, extra dependencies are installed here:
 # COPY environment.yaml .
 # RUN micromamba install -y -n venv -f environment.yaml
@@ -14,7 +14,7 @@ RUN conda-pack -p /opt/conda/envs/venv -o /tmp/env.tar && \
     rm /tmp/env.tar
 RUN /venv/bin/conda-unpack
 
-FROM ${RUNTIME_IMAGE?} AS runtime
+FROM ${RUNTIME_IMAGE} AS runtime
 COPY --from=build /venv /venv
 WORKDIR /app
 # When building actual cells, we copy files to the cell. In the tests, we use a
