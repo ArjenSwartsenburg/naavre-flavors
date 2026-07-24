@@ -1,4 +1,4 @@
-name: reprolab
+name: bgis-urban-planning
 channels:
   - conda-forge
 dependencies:
@@ -10,6 +10,7 @@ dependencies:
   - r-irkernel=1.3.2
   # user packages for all flavors
   - git=2.49.0
+  - jq>=1.8
   - minio=7.2.15
   - pip=25.0.1
   - python>=3.8
@@ -17,8 +18,16 @@ dependencies:
   - r-secretsprovider
   - r-getpass
   - r-aws.s3
+  # user packages for this flavor
+  - geopandas
+  - pyogrio
+  - pandas
+  - numpy
+  - openpyxl
+  - pulp
+  - matplotlib
+  - glpk
+  - pyomo
   - pip:
     - SecretsProvider
-    - git+https://github.com/QCDIS/jupyter-reprolab.git
-  # user packages for this flavor
-  - pyarrow
+

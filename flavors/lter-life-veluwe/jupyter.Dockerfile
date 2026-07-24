@@ -1,12 +1,5 @@
 FROM quay.io/jupyter/minimal-notebook:lab-4.3.6
 
-USER root
-RUN apt-get update && \
-    apt-get install --no-install-recommends -y nodejs npm && \
-    apt autoclean -y && \
-    apt autoremove -y
-USER $NB_USER
-
 COPY --chown=jovyan:jovyan ./docker/jupyter.requirements.txt requirements.txt
 RUN pip install -r requirements.txt
 
@@ -24,4 +17,7 @@ RUN mamba env create --yes -f environment.yaml && \
     mamba clean --all --yes
 RUN echo '{"CondaKernelSpecManager": {"env_filter": "/opt/conda$", "conda_only": true}}' >> /home/jovyan/.jupyter/jupyter_config.json
 
-RUN pip install git+https://github.com/QCDIS/jupyter-reprolab.git
+RUN mkdir -p /tmp/data
+
+COPY ./flavors/lter-life-veluwe/install_packages.R .
+RUN mamba run -n lter-life-veluwe bash -c "Rscript install_packages.R"
