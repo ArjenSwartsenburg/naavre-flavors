@@ -1,4 +1,4 @@
-FROM ghcr.io/arjenswartsenburg/naavre-base-cell-build:v0.1.0
+FROM ghcr.io/arjenswartsenburg/naavre-base-cell-build:v0.1.1
 
 ARG CONDA_ENV_FILE
 COPY --chown=mambauser:mambauser ${CONDA_ENV_FILE?} environment.yaml
