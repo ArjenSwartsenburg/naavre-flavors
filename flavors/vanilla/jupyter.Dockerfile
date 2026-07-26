@@ -1,4 +1,4 @@
-FROM ghcr.io/arjenswartsenburg/naavre-base-jupyter:v0.1.4
+FROM ghcr.io/arjenswartsenburg/naavre-base-jupyter:v0.1.5
 
 ARG CONDA_ENV_FILE
 COPY --chown=jovyan:jovyan ${CONDA_ENV_FILE?} environment.yaml
