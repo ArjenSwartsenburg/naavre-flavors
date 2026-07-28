@@ -1,1 +1,1 @@
-FROM ghcr.io/arjenswartsenburg/naavre-base-cell-runtime:v0.1.8
+FROM ghcr.io/arjenswartsenburg/naavre-base-cell-runtime:v0.1.9
